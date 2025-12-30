@@ -38,3 +38,47 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+// ===== NAVBAR SCROLL SPY =====
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-link");
+
+window.addEventListener("scroll", () => {
+  let scrollY = window.scrollY + 160;
+
+  sections.forEach(section => {
+    const top = section.offsetTop;
+    const height = section.offsetHeight;
+    const id = section.getAttribute("id");
+
+    if (scrollY >= top && scrollY < top + height) {
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${id}`) {
+          link.classList.add("active");
+        }
+      });
+    }
+  });
+});
+
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  return false;
+});
+
+// Disable copy, inspect, save shortcuts
+document.addEventListener("keydown", function (e) {
+  if (
+    e.ctrlKey && 
+    (e.key === "u" || e.key === "s" || e.key === "c")
+  ) {
+    e.preventDefault();
+  }
+
+  if (e.key === "F12") {
+    e.preventDefault();
+  }
+});

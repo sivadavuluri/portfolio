@@ -5,11 +5,6 @@
   <title>Siva | Python Full Stack Developer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO -->
-  <meta name="description" content="Siva | Python Full Stack Developer Portfolio">
-  <meta name="keywords" content="Python, Django, Full Stack Developer">
-  <meta name="author" content="Siva">
-
   <link rel="icon" href="favicon.ico">
 
   <!-- Fonts -->
@@ -23,22 +18,20 @@
 
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
 
-<!-- <div id="loader"></div> -->
-
+<body oncontextmenu="return false;">
 <!-- NAVBAR -->
 <header>
   <nav class="navbar">
     <div class="logo">Siva<span></span></div>
     <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#certifications" class="nav-link">Certifications</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
   </nav>
 </header>
@@ -60,7 +53,7 @@
       </div>
     </div>
     <div class="hero-image" data-aos="zoom-in">
-      <img src="assets/images/siva.jpg" alt="Profile">
+      <img src="assets/images/siva.jpg" alt="Profile" draggable="false" onmousedown="return false">
     </div>
   </div>
 </section>
@@ -80,7 +73,6 @@
   <h2 data-aos="fade-up">Education</h2>
 
   <div class="education-timeline">
-
     <div class="edu-item" data-aos="fade-right">
       <div class="edu-dot"></div>
       <div class="edu-content">
@@ -114,9 +106,7 @@
 <!-- SKILLS -->
 <section id="skills" class="section">
   <h2 data-aos="fade-up">Technical Skills</h2>
-
   <div class="skills-columns" data-aos="fade-up">
-
     <!-- Frontend -->
     <div class="skills-col">
       <h3>Frontend</h3>
@@ -195,7 +185,6 @@
 <!-- PROJECTS -->
 <section id="projects" class="section dark">
   <h2 data-aos="fade-up">Projects</h2>
-
   <div class="grid">
 
     <!-- Project 1 -->
@@ -240,7 +229,6 @@
 <!-- CERTIFICATIONS -->
 <section id="certifications" class="section">
   <h2 data-aos="fade-up">Certifications</h2>
-
   <div class="grid">
     <div class="card" data-aos="zoom-in">Python Full Stack Development</div>
     <div class="card" data-aos="zoom-in" data-aos-delay="150">Django Web Development</div>
@@ -252,7 +240,7 @@
   <h2 data-aos="fade-up">Get In Touch</h2>
 
   <div class="contact-card" data-aos="zoom-in">
-    <form id="contact-form">
+    <form id="contact-form" onsubmit="return false;">
 
       <div class="field">
         <i class="fas fa-user"></i>
@@ -281,7 +269,6 @@
   </div>
 </section>
 
-
 <section class="footer-section">
     <div class="footer-container">
       <p align="center">Connect with me on social media:</p>
@@ -297,27 +284,20 @@
       © 2024 Siva | Python Full Stack Developer
 </footer>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="js/main.js"></script>
-
 <!-- AOS -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
 <!-- EmailJS -->
-
-<script>
-  AOS.init({
-  duration: 1300,
-  easing: 'ease-in-out',
-  once: true,
-  disableMutationObserver: true
-});
-
-</script>
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-
 <!-- Main JS -->
 <script src="js/main.js"></script>
 
+<script>
+  AOS.init({
+    duration: 1300,
+    easing: 'ease-in-out',
+    once: true,
+    disableMutationObserver: true
+  });
+</script>
 </body>
 </html>
