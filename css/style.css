@@ -97,17 +97,18 @@ header {
   color: var(--accent-3);
 }
 
-.nav-links li a.active {
-  color: #7ce4f1;
-}
-
-.nav-links li a.active::after {
-  width: 100%;
-}
-
 .nav-links li a {
   position: relative;
   padding: 6px 10px;
+}
+
+/* ===== NAVBAR ACTIVE (ONLY NAVBAR) ===== */
+header .nav-links li a.active {
+  color: var(--accent);
+}
+
+header .nav-links li a.active::after {
+  width: 100%;
 }
 
 .nav-links li a::after {
@@ -121,14 +122,6 @@ header {
   transition: 0.3s ease;
   transform: translateX(-50%);
 }
-
-.nav-links a.active {
-  color: var(--accent);
-}
-.nav-links a.active::after {
-  background: var(--accent);
-}
-
 
 
 /* =====================
@@ -250,17 +243,7 @@ header {
   position: relative;
   display: inline-block;
 }
-.section h2::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -10px;
-  width: 60%;
-  height: 3px;
-  background: var(--accent);
-  transform: translateX(-50%);
-  border-radius: 10px;
-}
+
 .section-text {
   max-width: 800px;
   margin: auto;
@@ -707,3 +690,11 @@ footer {
   color: rgba(215, 225, 236, 0.8);
 }
 
+/* Prevent active styles inside sections */
+section a.active {
+  color: inherit !important;
+}
+
+section a::after {
+  display: none !important;
+}
