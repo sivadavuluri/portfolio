@@ -25,7 +25,7 @@
 </head>
 <body>
 
-<div id="loader"></div>
+<!-- <div id="loader"></div> -->
 
 <!-- NAVBAR -->
 <header>
@@ -249,17 +249,39 @@
 
 <!-- CONTACT -->
 <section id="contact" class="section dark">
-  <h2 data-aos="fade-up">Contact Me</h2>
+  <h2 data-aos="fade-up">Get In Touch</h2>
 
-  <form id="contactForm" class="contact-form" data-aos="zoom-in">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Your Message" required></textarea>
+  <div class="contact-card" data-aos="zoom-in">
+    <form id="contact-form">
 
-    <button type="submit" class="btn primary">Send Message</button>
-    <p id="form-status"></p>
-  </form>
+      <div class="field">
+        <i class="fas fa-user"></i>
+        <input type="text" name="name" required />
+        <label>Your Name</label>
+      </div>
+
+      <div class="field">
+        <i class="fas fa-envelope"></i>
+        <input type="email" name="email" required />
+        <label>Email Address</label>
+      </div>
+
+      <div class="field textarea">
+        <i class="fas fa-comment"></i>
+        <textarea name="message" required></textarea>
+        <label>Your Message</label>
+      </div>
+
+      <button type="button" class="send-btn" id="sendBtn">
+        <span>Send Message</span>
+      </button>
+
+      <p id="status"></p>
+    </form>
+  </div>
 </section>
+
+
 <section class="footer-section">
     <div class="footer-container">
       <p align="center">Connect with me on social media:</p>
@@ -277,9 +299,25 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="js/main.js"></script>
-</body>
-</html>
+
+<!-- AOS -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- EmailJS -->
+
+<script>
+  AOS.init({
+  duration: 1300,
+  easing: 'ease-in-out',
+  once: true,
+  disableMutationObserver: true
+});
+
+</script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+<!-- Main JS -->
 <script src="js/main.js"></script>
+
 </body>
 </html>
