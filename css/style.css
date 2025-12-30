@@ -698,3 +698,41 @@ section a.active {
 section a::after {
   display: none !important;
 }
+
+/* ===== MOBILE NAVBAR FIX ===== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 5%;
+  }
+
+  .nav-links {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+    padding: 6px 8px;
+  }
+}
+@media (max-width: 768px) {
+  .section h2 {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 768px) {
+  .hero-image img {
+    width: 200px;
+  }
+}
+@media (max-width: 600px) {
+  .contact-card {
+    padding: 30px 20px;
+  }
+
+  .send-btn {
+    padding: 16px;
+    font-size: 1rem;
+  }
+}
