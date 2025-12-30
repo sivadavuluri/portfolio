@@ -20,6 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
       form
     )
     .then(() => {
+      emailjs.sendForm(
+        "service_d1n0hmf",
+        "template_wst3fs1",
+        form
+      );
+      
       statusText.style.color = "#4caf50";
       statusText.innerText = "✅ Message sent successfully!";
       button.querySelector("span").innerText = "Sent ✔";
