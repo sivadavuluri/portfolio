@@ -9,7 +9,31 @@ document.addEventListener("DOMContentLoaded", function () {
   const statusText = document.getElementById("status");
 
   button.addEventListener("click", function () {
-    statusText.style.color = "#aaa";
+    // simple validation: check required fields and email format
+    const inputs = Array.from(form.querySelectorAll('input, textarea'));
+    let valid = true;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    inputs.forEach(el => {
+      el.classList.remove('invalid');
+      const val = (el.value || '').trim();
+      if (el.required && !val) {
+        valid = false;
+        el.classList.add('invalid');
+      }
+      if (el.type === 'email' && val && !emailRegex.test(val)) {
+        valid = false;
+        el.classList.add('invalid');
+      }
+    });
+
+    if (!valid) {
+      statusText.style.color = "#f44336";
+      statusText.innerText = "❌ Please fill all required fields correctly.";
+      return;
+    }
+
+    statusText.style.color = "#4caf50";
     statusText.innerText = "Sending...";
     button.disabled = true;
     button.querySelector("span").innerText = "Sending...";
@@ -88,3 +112,13 @@ document.addEventListener("keydown", function (e) {
     e.preventDefault();
   }
 });
+
+ const textEl = document.querySelector('.text');
+
+setInterval(() => {
+    if (textEl.textContent === "Front-end Developer") {
+        textEl.textContent = "Full Stack Developer";
+    } else {
+        textEl.textContent = "Front-end Developer";
+    }
+}, 4000); // Toggles the text every 4 seconds to match the 8-second animation cycle
