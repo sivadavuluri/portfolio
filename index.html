@@ -4,6 +4,45 @@
   <meta charset="UTF-8">
   <title>Siva | Python Full Stack Developer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<a href="#" class="back-to-top">&uarr;</a>
+<style>
+/* Enable smooth scrolling for the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  background: linear-gradient(135deg,#0f172a 0%,#0b1220 100%);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+  border-radius: 50%;
+  text-decoration: none;
+  transition: transform .18s ease, opacity .18s ease;
+  opacity: 0.95;
+  z-index: 9999;
+}
+.back-to-top:hover {
+  transform: translateY(-4px);
+  opacity: 1;
+}
+.back-to-top:focus {
+  outline: none;
+}
+
+/* Hide on very small screens if needed */
+@media (max-width:420px) {
+  .back-to-top { bottom: 16px; right: 16px; width:40px; height:40px; font-size:18px; }
+}
+</style>
 
   <link rel="icon" href="favicon.ico">
 
