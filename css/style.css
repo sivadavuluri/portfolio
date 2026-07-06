@@ -6,16 +6,12 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-}
-
-* {
   transition:
     background-color 0.3s ease,
     color 0.3s ease,
     box-shadow 0.3s ease,
     border-color 0.3s ease;
 }
-
 
 html {
   scroll-behavior: smooth;
@@ -39,6 +35,7 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
+  overflow-x: hidden;
 }
 
 /* =====================
@@ -62,7 +59,7 @@ header {
   width: 100%;
   background: var(--glass);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);    
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   z-index: 1000;
 }
@@ -146,6 +143,7 @@ header .nav-links li a.active::after {
 
 .hero-text h1 {
   font-size: 3rem;
+  margin-top: 30px;
 }
 
 .hero-text span {
@@ -177,14 +175,14 @@ header .nav-links li a.active::after {
 }
 
 .text {
+    display: inline-block;
     font-size: 2.5rem;
     font-weight: bold;
     color: #00ff88; /* Replace with your primary or accent color */
     white-space: nowrap;
     overflow: hidden;
-    animation: 
-        typing 8s steps(20) infinite,
-        blink 0.5s step-end infinite;
+    animation:   typing 8s steps(20) infinite,
+      blink 0.5s step-end infinite;
 }
 
 /* Timeline handles typing out, holding phrase, erasing, and looping */
@@ -193,12 +191,6 @@ header .nav-links li a.active::after {
     15%, 40% { width: 19ch; }  /* 'Front-end Developer' is 19 characters */
     48%, 52% { width: 0; }     /* Blanks out completely */
     65%, 90% { width: 20ch; }  /* 'Full-stack Developer' is 20 characters */
-}
-
-/* Makes the vertical cursor blink */
-@keyframes blink {
-    from, to { border-color: transparent }
-    50% { border-color: #ffffff; }
 }
 
 .hero-text p {
@@ -222,9 +214,15 @@ header .nav-links li a.active::after {
   border-radius: 30px;
   text-decoration: none;
   font-weight: 600;
+  width: fit-content; 
   transition: 0.3s;
   display: inline-block;
-  margin-top: 0.4in;
+  margin-top: 2rem;
+  border: 2px solid transparent;
+}
+
+.btn + .btn {
+  margin-left: 1rem;
 }
 
 .btn:hover,
@@ -321,7 +319,7 @@ header .nav-links li a.active::after {
 .education-timeline::before {
   content: '';
   position: absolute;
-  left: 20px;
+  left: 19px;
   top: 0;
   width: 3px;
   height: 100%;
@@ -344,15 +342,16 @@ header .nav-links li a.active::after {
 
 .edu-content {
   background: var(--panel);
-  padding: 20px 25px;
-  border-radius: 12px;
+  padding: 20px;
   width: 100%;
-  transition: 0.3s;
+  border-radius: 12px;
+  box-shadow: var(--glow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .edu-content:hover {
   transform: translateX(5px);
-  box-shadow: 0 0 22px rgba(124,92,255,0.22);
+  box-shadow: 0 0 22px rgba(255, 255, 255, 0.22);
 }
 
 .edu-content h3 {
@@ -366,16 +365,15 @@ header .nav-links li a.active::after {
 
 .edu-content span {
   font-size: 0.9rem;
-  color: rgba(255,111,163,0.95);
+  color: #aaa;
 }
 
-/* ===============================
+/* ================================
    TECHNICAL SKILLS – SIDE BY SIDE
 ================================ */
-
 .skills-columns {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 30px;
   margin-top: 50px;
 }
@@ -385,12 +383,11 @@ header .nav-links li a.active::after {
   border-radius: 16px;
   padding: 25px 20px;
   transition: 0.3s;
-
 }
 
 .skills-col h3 {
   text-align: center;
-  color: rgba(255,111,163,0.95);
+  color: rgba(255, 111, 163, 0.95);
   margin-bottom: 20px;
   font-size: 1.25rem;
 }
@@ -454,14 +451,14 @@ header .nav-links li a.active::after {
 ===================== */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 25px;
   margin-top: 40px;
   transition: 0.3s;
 }
 
 .card {
-  background: var(--panel);
+  background: #0F172A;
   padding: 25px;
   border-radius: 15px;
   transition: 0.3s;
@@ -490,7 +487,18 @@ header .nav-links li a.active::after {
   transition: 0.3s;
 }
 
+#projects .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+  background: linear-gradient(135deg,#007281);
+  transition: 0.3s;
 
+}
+
+#certifications .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 179, 255, 0.9);
+}
 
 /* ===============================
    PROJECT TECH STACK TAGS
@@ -510,17 +518,6 @@ header .nav-links li a.active::after {
   transition: 0.3s;
 }
 
-.tech-stack span {
-  background: rgba(255,111,163,0.07);
-  border: 1px solid var(--accent-3);
-  color: rgba(255,111,163,0.95);
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  transition: 0.3s;
-  
-}
 
 /* =====================
    ABOUT ME
@@ -599,10 +596,10 @@ header .nav-links li a.active::after {
 .field input:valid + label,
 .field textarea:focus + label,
 .field textarea:valid + label {
-  top: -8px;
+  top: 0px;
   font-size: 12px;
   color: #00bcd4;
-  background: #0f172a;
+  background: var(--panel);
   padding: 0 6px;
 }
 
@@ -617,8 +614,9 @@ header .nav-links li a.active::after {
 }
 
 .send-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0,188,212,0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0,188,212,0.4);
+
 }
 
 .send-btn span {
@@ -780,7 +778,8 @@ section a::after {
 .footer-section {
   background: #0f172a;
   color: #e2e8f0;
-  padding: 60px 5%;
+  padding: 40px 5%;
+  height: auto;
 }
 
 .footer-container {
@@ -804,6 +803,7 @@ section a::after {
 
 .footer-section nav {
   display: flex;
+  align-items: flex-start;
   flex-direction: column;
   gap: 12px;
 }
@@ -856,4 +856,223 @@ section a::after {
   .footer-section nav {
     align-items: center;
   }
+}
+
+/* =====================
+   MOBILE RESPONSIVENESS
+===================== */
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 5%;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .typing-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .static-text {
+    font-size: 1.8rem;
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+
+  .text {
+    font-size: 1.8rem;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .skills-columns {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0 5%;
+  }
+
+  .skills-col {
+    padding: 15px 10px;
+  }
+
+  .skills-col h3 {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+
+  .skills-col li {
+    padding: 8px 10px;
+  }
+
+  .education-timeline {
+    margin: 30px auto 0;
+  }
+
+  .section {
+    padding: 60px 5%;
+  }
+
+  .section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+
+  .section-text {
+    font-size: 0.95rem;
+  }
+
+  .about-me {
+    font-size: 0.95rem;
+    margin: 20px auto 0;
+  }
+
+  .contact-card {
+    max-width: 100%;
+    padding: 25px 15px;
+    margin: 0 5%;
+  }
+
+  .field input,
+  .field textarea {
+    padding: 12px 12px 12px 35px;
+    font-size: 14px;
+  }
+
+  .send-btn {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: auto;
+    padding: 60px 4%;
+  }
+
+  .hero-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .static-text,
+  .text {
+    font-size: 1.3rem;
+  }
+
+  .hero-text p {
+    font-size: 0.85rem;
+  }
+
+  .hero-image img {
+    width: 150px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 40px 4%;
+  }
+
+  .section h2 {
+    font-size: 1.4rem;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .navbar {
+    padding: 10px 4%;
+  }
+
+  .nav-links {
+    gap: 8px;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    padding: 4px 6px;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+}
+
+/* Additional responsive support for mobile and tablet views */
+@media (max-width: 1024px) {
+  .hero-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .hero-image,
+  .hero-text {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-image {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-image img {
+    max-width: 240px;
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 5%;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .typing-container {
+    justify-content: center;
+  }
+
+  .static-text,
+  .text {
+    white-space: normal;
+  }
+}
+
+html,
+body {
+  max-width: 100%;
+  min-width: 320px;
+  overflow-x: hidden;
 }
