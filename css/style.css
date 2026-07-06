@@ -18,18 +18,15 @@ html {
 }
 
 :root {
-  --bg: #06111f;           /* deep midnight blue */
-  --panel: #0f172a;        /* cards / sections */
-  --muted: #cbd5e1;        /* muted text */
-  --text: #e2e8f0;         /* bright text */
-  --accent: #38bdf8;       /* cyan */
-  --accent-2: #67e8f9;     /* light cyan */
-  --accent-3: #a78bfa;     /* soft violet (headings) */
-  --glass: rgba(15, 23, 42, 0.75);
-
-  --primary-gradient: linear-gradient(135deg, #38bdf8, #22d3ee);
-  --shadow-accent: 0 0 25px rgba(56, 189, 248, 0.24);
-  --glow-soft: 0 0 18px rgba(167, 139, 250, 0.18);
+  --bg: #09101c;
+  --text: #e5e9f0;
+  --accent: #4db6ac;
+  --accent-2: #78a1b2;
+  --accent-3: #f5c158;
+  --primary-gradient: linear-gradient(135deg, #4db6ac, #78a1b2);
+  --glass: rgba(255, 255, 255, 0.08);
+  --panel: rgba(255, 255, 255, 0.06);
+  --shadow-accent: 0 4px 15px rgba(77, 182, 172, 0.35);
 }
 
 body {
@@ -47,7 +44,7 @@ body {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: #000;
+  background: #05080f;
   z-index: 9999;
 }
 
@@ -88,7 +85,7 @@ header {
 }
 
 .nav-links a {
-  color: #9ca3af;
+  color: #b0bec5;
   text-decoration: none;
   transition: 0.3s;
 }
@@ -155,7 +152,7 @@ header .nav-links li a.active::after {
   .text-changer {
       font-size: 3rem;
       font-weight: bold;
-      color: #dff707;
+      color: var(--accent-3);
       position: relative;
   }
 
@@ -176,13 +173,31 @@ header .nav-links li a.active::after {
 
 .text {
     display: inline-block;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #00ff88; /* Replace with your primary or accent color */
+    --typing-duration: 8s; /* total loop duration */
+    --typing-steps: 20;    /* approximate characters for steps() timing */
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: var(--accent); /* accent color */
     white-space: nowrap;
-    overflow: hidden;
-    animation:   typing 8s steps(20) infinite,
-      blink 0.5s step-end infinite;
+    overflow: hidden;              /* keeps the "typed" effect */
+    letter-spacing: 0.03em;
+    position: relative;
+    /* Typing and caret animations. Reduced-motion respects user preference below. */
+    animation: typing var(--typing-duration) steps(var(--typing-steps)) infinite,
+           blink 0.7s step-end infinite;
+
+  }
+
+  /* Faux caret for improved realism */
+  .text::after{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 12%;
+    width: 2px;
+    height: 76%;
+    background: currentColor;
+    animation: caret 1s steps(1) infinite;
 }
 
 /* Timeline handles typing out, holding phrase, erasing, and looping */
@@ -193,10 +208,23 @@ header .nav-links li a.active::after {
     65%, 90% { width: 20ch; }  /* 'Full-stack Developer' is 20 characters */
 }
 
+@keyframes caret{
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .text, .text::after{
+    animation: none !important;
+  }
+  .text{ width: auto; }
+}
+
 .hero-text p {
   max-width: 550px;
   line-height: 1.6;
-  color: #ddd;
+  color: #cfd8dc;
 }
 
 .gradient-text {
@@ -232,7 +260,7 @@ header .nav-links li a.active::after {
 
 .primary {
   background: var(--primary-gradient);
-  color: #020617;
+  color: #0b1220;
 }
 
 .secondary {
@@ -242,7 +270,7 @@ header .nav-links li a.active::after {
 
 .secondary:hover {
   background: var(--accent);
-  color: #020617;
+  color: #0b1220;
 }
 
 .primary:hover {
@@ -286,11 +314,11 @@ header .nav-links li a.active::after {
 .section {
   padding: 80px 8%;
   text-align: center;
-  background: #0F172A;
+  background: #0d1628;
 }
 
 .section.dark {
-  background: #5e4a6e;
+  background: #16263a;
 }
 
 .section h2 {
@@ -303,7 +331,7 @@ header .nav-links li a.active::after {
 .section-text {
   max-width: 800px;
   margin: auto;
-  color: #ffffff;
+  color: #d7e1ef;
   line-height: 1.6;
 }
 
@@ -337,7 +365,7 @@ header .nav-links li a.active::after {
   background: var(--accent-3);
   border-radius: 50%;
   margin: 6px 30px 0 14px;
-  box-shadow: var(--glow-pink);
+  box-shadow: 0 0 12px rgba(245, 193, 88, 0.18);
 }
 
 .edu-content {
@@ -345,7 +373,7 @@ header .nav-links li a.active::after {
   padding: 20px;
   width: 100%;
   border-radius: 12px;
-  box-shadow: var(--glow-soft);
+  box-shadow: 0 0 22px rgba(255, 255, 255, 0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -359,13 +387,13 @@ header .nav-links li a.active::after {
 }
 
 .edu-content p {
-  color: #ddd;
+  color: #cfd8dc;
   margin-bottom: 4px;
 }
 
 .edu-content span {
   font-size: 0.9rem;
-  color: #aaa;
+  color: #a5b1c2;
 }
 
 /* ================================
@@ -379,7 +407,7 @@ header .nav-links li a.active::after {
 }
 
 .skills-col {
-  background: rgb(61, 61, 61);
+  background: rgb(20, 30, 44);
   border-radius: 16px;
   padding: 25px 20px;
   transition: 0.3s;
@@ -387,7 +415,7 @@ header .nav-links li a.active::after {
 
 .skills-col h3 {
   text-align: center;
-  color: rgba(255, 111, 163, 0.95);
+  color: rgba(245, 193, 88, 0.95);
   margin-bottom: 20px;
   font-size: 1.25rem;
 }
@@ -398,8 +426,8 @@ header .nav-links li a.active::after {
 }
 
 .skills-col ul li{
-    background: rgb(233, 233, 233);
-    color: black;
+    background: rgb(34, 50, 70);
+    color: #e5e9f0;
 }
 
 .skills-col li {
@@ -427,7 +455,7 @@ header .nav-links li a.active::after {
 }
 
 .skills-col li {
-    background-color: rgb(168, 160, 160);
+    background-color: rgb(34, 50, 70);
     width: auto;
 }
 
@@ -458,20 +486,20 @@ header .nav-links li a.active::after {
 }
 
 .card {
-  background: #0F172A;
+  background: #0b1724;
   padding: 25px;
   border-radius: 15px;
   transition: 0.3s;
 }
 
 #certifications {
-  background: #0F172A;
+  background: #0b1724;
   border: none;
-  color: #ddd;
+  color: #e5e9f0;
 }
 #certifications .card{
-    background: #8db2b8;
-    color: black;
+    background: #1e3649;
+    color: #e5e9f0;
 }    
 .coming {
   border: 2px dashed var(--accent-3);
@@ -490,14 +518,14 @@ header .nav-links li a.active::after {
 #projects .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
-  background: linear-gradient(135deg,#007281);
+  background: linear-gradient(135deg, #1d4258, #4db6ac);
   transition: 0.3s;
 
 }
 
 #certifications .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(0, 179, 255, 0.9);
+  box-shadow: 0 0 20px rgba(77, 182, 172, 0.3);
 }
 
 /* ===============================
@@ -506,7 +534,7 @@ header .nav-links li a.active::after {
 
 .project-card p {
   margin-bottom: 15px;
-  color: #ddd;
+  color: #cfd8dc;
   line-height: 1.5;
   transition: 0.3s;
 }
@@ -526,7 +554,7 @@ header .nav-links li a.active::after {
   max-width: 800px;
   margin: 40px auto 0;
   text-align: left;
-  color: #ddd;
+  color: #cfd8dc;
   line-height: 1.6;
 
 }
@@ -539,7 +567,7 @@ header .nav-links li a.active::after {
   max-width: 520px;
   margin: auto;
   padding: 40px 30px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(12px);
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.4);
@@ -560,7 +588,7 @@ header .nav-links li a.active::after {
   top: 50%;
   left: 14px;
   transform: translateY(-50%);
-  color: #00bcd4;
+  color: var(--accent-2);
   font-size: 15px;
 }
 
@@ -569,7 +597,7 @@ header .nav-links li a.active::after {
   width: 100%;
   padding: 14px 14px 14px 42px;
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 8px;
   color: #fff;
   font-size: 15px;
@@ -586,7 +614,7 @@ header .nav-links li a.active::after {
   left: 42px;
   top: 50%;
   transform: translateY(-50%);
-  color: #aaa;
+  color: #b0bec5;
   pointer-events: none;
   transition: 0.3s ease;
   font-size: 14px;
@@ -598,13 +626,13 @@ header .nav-links li a.active::after {
 .field textarea:valid + label {
   top: 0px;
   font-size: 12px;
-  color: #00bcd4;
+  color: var(--accent);
   background: var(--panel);
   padding: 0 6px;
 }
 
 .send-btn {
-  background: linear-gradient(135deg, #00bcd4, #4dd0e1);
+  background: var(--primary-gradient);
   border: none;
   padding: 14px;
   border-radius: 30px;
@@ -615,12 +643,12 @@ header .nav-links li a.active::after {
 
 .send-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0,188,212,0.4);
+  box-shadow: 0 10px 30px rgba(77, 182, 172, 0.4);
 
 }
 
 .send-btn span {
-  color: #000;
+  color: #09101c;
 }
 
 #status {
@@ -695,9 +723,9 @@ header .nav-links li a.active::after {
   transform: translateX(0);
 }
 .tech-stack span {
-  background: rgba(255,111,163,0.07);
+  background: rgba(245,193,88,0.12);
   border: 1px solid var(--accent-3);
-  color: rgba(255,111,163,0.95);
+  color: var(--accent-3);
   padding: 4px 10px;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -707,7 +735,7 @@ header .nav-links li a.active::after {
 .tech-stack span:hover {
   background: var(--accent-3);
   color: #fff;
-} /* Closing brace added here */
+}
 .social-icons {
   margin-top: 15px;
   display: flex;
@@ -776,8 +804,8 @@ section a::after {
 }
 
 .footer-section {
-  background: #0f172a;
-  color: #e2e8f0;
+  background: #07101a;
+  color: #e5e9f0;
   padding: 40px 5%;
   height: auto;
 }
@@ -798,7 +826,7 @@ section a::after {
 
 .footer-section p {
   line-height: 1.8;
-  color: #cbd5e1;
+  color: #aeb7c7;
 }
 
 .footer-section nav {
@@ -815,7 +843,7 @@ section a::after {
 }
 
 .footer-section a:hover {
-  color: #38bdf8;
+  color: var(--accent);
 }
 
 .footer-section .footer-container > div:nth-child(3) div {
@@ -831,7 +859,7 @@ section a::after {
 .footer-section footer {
   margin-top: 40px;
   text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 22px;
   font-size: 0.95rem;
   color: #94a3b8;
@@ -1022,57 +1050,4 @@ section a::after {
   .logo {
     font-size: 1.3rem;
   }
-}
-
-/* Additional responsive support for mobile and tablet views */
-@media (max-width: 1024px) {
-  .hero-container {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-  }
-
-  .hero-image,
-  .hero-text {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .hero-image {
-    display: flex;
-    justify-content: center;
-  }
-
-  .hero-image img {
-    max-width: 240px;
-    width: 100%;
-    height: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    padding: 60px 5%;
-  }
-
-  .hero-text {
-    text-align: center;
-  }
-
-  .typing-container {
-    justify-content: center;
-  }
-
-  .static-text,
-  .text {
-    white-space: normal;
-  }
-}
-
-html,
-body {
-  max-width: 100%;
-  min-width: 320px;
-  overflow-x: hidden;
 }
